@@ -25,22 +25,47 @@ const loadNewsCategoryId = (id) => {
 }
 
 const displayAllNews = blogs => {
-    console.log(blogs);
-    /* const blogContainer = document.getElementById('blog-container');
+    // console.log(blogs);
+
+    const blogsContainer = document.getElementById('blog-container');
     blogs.forEach(blog => {
         console.log(blog);
-    }) */
+        const blogDiv = document.createElement('div');
+        blogDiv.classList.add('column');
+        blogDiv.innerHTML = `
+        <div class="row g-0">
+        <div class="col-md-4">
+            <img src="${blog.image_url}" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">${blog.title}</h5>
+                <p class="card-text">${blog.details}</p>
+            </div>
+            <div class="d-flex">
+                    <div>
+                        <img src="${blog.author.img}" alt="">
+                        <h6>${blog.author.name}</h6>
+                    </div>
+                    <div>
+                        <h6>${blog.total_view}</h6>
+                    </div>
+                </div>
+        </div>
+        </div>
+        `;
+        blogsContainer.appendChild(blogDiv);
+    })
 }
 
 
 
 
-
-displayAllNews();
+// displayAllNews();
 
 loadNewsCategoryId();
 
 loadNewsCategory();
 
-displayData();
+// displayData();
 
