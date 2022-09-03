@@ -51,7 +51,7 @@ const displayAllNews = blogs => {
                             <h6>${blog.total_view}</h6>
                         </div>
                         <div>
-                            <button onclick="displayNewsDetail('${blog.author}')" href="#" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#displayModal">More Info</button>
+                            <button onclick="loadNewsDetail('${blog._id}')" href="#" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#displayModal">More Info</button>
                         </div>
                         
                     </div>
@@ -64,28 +64,35 @@ const displayAllNews = blogs => {
 
 
 
-/* const loadNewsDetail = details => {
+const loadNewsDetail = details => {
     fetch(`https://openapi.programming-hero.com/api/news/${details}`)
         .then(res => res.json())
-        .then(data => console.log(data))
-} */
+        .then(data => displayNewsDetail(data.data))
+}
 
-const displayNewsDetail = modal => {
-    console.log(modal);
-    const modalTitle = document.getElementById('displayModalLabel');
-    // console.log(modalTitle);
-    modalTitle.innerText = modal.details;
-    const newsDetail = document.getElementById('news-details');
-    console.log(newsDetail);
-    newsDetail.innerHTML = `
-   <h5>Author Name: ${modal.name ? modal.name : 'No Author Found'} </h5>
-   `;
+const displayNewsDetail = modals => {
+    console.log(modals);
 
+    modals.forEach(modal => {
+        console.log(modal);
+
+        const modalTitle = document.getElementById('displayModalLabel');
+        modalTitle.innerHTML = `
+        <h3>Title: ${modal.title ? modal.title : 'No Title Found'}</h3>
+        `;
+        const newsDetail = document.getElementById('news-details');
+        newsDetail.innerHTML = `
+            <h5>Author Name: ${modal.author.name ? modal.author.name : 'No Author Found'}</h5>
+            <h6>Published Date: ${modal.author.published_date ? modal.author.published_date : 'No Published Date Found'}</h6>
+            <h6>Views: ${modal.total_view ? modal.total_view : 'No Views Found'}</h6>
+            <p>Details: ${modal.details ? modal.details : 'No Details Found'}</p>
+            `;
+    })
 }
 
 
 
-// loadNewsDetail();
+loadNewsDetail();
 
 
 // displayNewsDetail();
