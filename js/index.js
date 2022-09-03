@@ -1,9 +1,15 @@
-const loadNewsCategory = () => {
-    fetch('https://openapi.programming-hero.com/api/news/categories')
-        .then(res => res.json())
-        .then(data => displayData(data.data.news_category))
+//loading news category with async, try, catch
+const loadNewsCategory = async () => {
+    try {
+        const res = await fetch('https://openapi.programming-hero.com/api/news/categories');
+        const data = await res.json();
+        displayData(data.data.news_category);
+    } catch (error) {
+        console.log(error);
+    }
 }
 
+// toggole spinner function
 const toggleSpinner = isLoading => {
     const loaderSection = document.getElementById('loader');
     if (isLoading) {
@@ -14,12 +20,11 @@ const toggleSpinner = isLoading => {
     }
 }
 
+// Displaying News Catagories
 const displayData = categories => {
     const categoriesContainer = document.getElementById('categories');
     categories.forEach(category => {
-        // console.log(category);
         const categoryDiv = document.createElement('div');
-        // categoryDiv.classList.add('col');
         categoryDiv.innerHTML = `
         <button onclick="loadNewsCategoryId('${category.category_id}')" class="btn btn-light fs-5 fw-semibold">${category.category_name}</button>
         `;
@@ -27,12 +32,20 @@ const displayData = categories => {
     });
 }
 
+// loading News By Specific Categoyy
 const loadNewsCategoryId = (id) => {
     toggleSpinner(true);
     fetch(`https://openapi.programming-hero.com/api/news/category/${id}`)
         .then(res => res.json())
         .then(data => displayAllNews(data.data))
 }
+
+/* sorting
+const categories = blogs.sort((a, b) => {
+    return b.propertyName - a.propertyName;
+})
+console.log(blogs); */
+
 
 const displayAllNews = blogs => {
     const blogsContainer = document.getElementById('blog-container');
