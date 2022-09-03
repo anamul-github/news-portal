@@ -13,37 +13,42 @@
 </head>
 
 <body>
-    <header class="container">
-        <nav>
+    <header class="container py-3">
+        <!-- <nav class="navbar bg-light"> -->
+        <div class="d-flex">
+            <div class="container-fluid">
+                <h4 class="">News Today</h4>
+            </div>
+            <div class="d-flex justify-content-end">
+                <div class="px-2">
+                    <a class="nav-link text-secondary" href="#">News</a>
+                </div>
+                <div class="px-2">
+                    <a class="nav-link text-secondary" href="#">Blog</a>
+                </div>
+            </div>
+        </div>
+        <!-- </nav> -->
 
-
-            <ul class="nav justify-content-end">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Active</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-            </ul>
-        </nav>
     </header>
 
-    <main>
-        <section class="container">
-            <div id="categories" class="d-flex justify-content-start">
+    <main class="container">
+        <section class="mb-5">
+            <div id="categories" class="d-flex justify-content-evenly">
                 <button type="button" class="btn btn-light">Home</button>
             </div>
         </section>
 
-        <section class="container">
+        <section>
             <div id="blog-container" class="card mb-3">
 
             </div>
         </section>
     </main>
+
+    <footer class="mt-5">
+        <h3 class="text-center">Copyright 2022 News Portal</h3>
+    </footer>
 
 
 

@@ -9,7 +9,7 @@ const displayData = categories => {
     categories.forEach(category => {
         // console.log(category);
         const categoryDiv = document.createElement('div');
-        categoryDiv.classList.add('col');
+        // categoryDiv.classList.add('col');
         categoryDiv.innerHTML = `
         <button onclick="loadNewsCategoryId('${category.category_id}')" class="btn btn-light">${category.category_name}</button>
         `;
@@ -44,14 +44,14 @@ const displayAllNews = blogs => {
                 </div>
                     <div class="d-flex justify-content-center">
                         <div>
-                            <img class="author-img" src="${blog.author.img}" alt="">
+                            <img class="img-fluid author-img" src="${blog.author.img}" alt="">
                             <h6>${blog.author.name}</h6>
                         </div>
                         <div>
                             <h6>${blog.total_view}</h6>
                         </div>
                         <div>
-                            <button type="button" class="btn btn-primary">Details</button>
+                            <button onclick="loadNewsDetail(${blogs})" type="button" class="btn btn-primary">More Info</button>
                         </div>
                         
                     </div>
@@ -61,6 +61,18 @@ const displayAllNews = blogs => {
         blogsContainer.appendChild(blogDiv);
     })
 }
+
+
+
+const loadNewsDetail = () => {
+    fetch('https://openapi.programming-hero.com/api/news/0282e0e58a5c404fbd15261f11c2ab6a')
+        .then(res => res.json())
+        .then(data => console.log(data))
+}
+
+
+
+loadNewsDetail();
 
 
 
