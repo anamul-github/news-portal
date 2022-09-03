@@ -48,6 +48,10 @@ const displayAllNews = blogs => {
     }
 
     // Display News Count
+    const newsCount = document.getElementById('news-count');
+    newsCount.innerHTML = `
+        <h5 class="ps-4">  ${blogs.length} items found in this category</h5>
+    `
 
     blogs.forEach(blog => {
         const blogDiv = document.createElement('div');
@@ -64,11 +68,11 @@ const displayAllNews = blogs => {
                 </div>
                     <div class="d-flex justify-content-center">
                         <div>
-                            <img class="img-fluid author-img" src="${blog.author.img}" alt="">
-                            <h6>${blog.author.name}</h6>
+                            <img class="img-fluid author-img" src="${blog.author.img ? blog.author.img : 'No Image Found'}" alt="">
+                            <h6>${blog.author.name ? blog.author.name : 'No Name Found'}</h6>
                         </div>
                         <div>
-                            <h6>${blog.total_view}</h6>
+                            <h6>${blog.total_view ? blog.total_view : 'No Views'}</h6>
                         </div>
                         <div>
                             <button onclick="loadNewsDetail('${blog._id}')" href="#" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#displayModal">More Info</button>
@@ -106,8 +110,8 @@ const displayNewsDetail = modals => {
         newsDetail.innerHTML = `
             <h5>Author Name: ${modal.author.name ? modal.author.name : 'No Author Found'}</h5>
             <h6>Published Date: ${modal.author.published_date ? modal.author.published_date : 'No Published Date Found'}</h6>
-            <h6>Views: ${modal.total_view ? modal.total_view : 'No Views Found'}</h6>
-            <img class="img-fluid" src="${modal.author.img}" alt="">
+            <h6>Views: ${modal.total_view ? modal.total_view : 'No Views'}</h6>
+            <img class="img-fluid" src="${modal.author.img ? modal.author.img : 'No Image Found'}" alt="">
             `;
     })
 }
