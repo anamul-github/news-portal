@@ -75,19 +75,19 @@ const displayAllNews = blogs => {
                 <img src="${blog.thumbnail_url}" class="img-fluid rounded-start" alt="...">
             </div>
             <div class="col-md-8 p-3">
-                <div class="card-body mt-3">
+                <div class="card-body mt-3 pe-5">
                     <h5 class="card-title">${blog.title}</h5>
-                    <p class="card-text">${blog.details.slice(0, 300) + '...'}</p>
+                    <p class="card-text pt-3">${blog.details.slice(0, 300) + '...'}</p>
                 </div>
-                    <div class="d-flex justify-content-center align-items-center pt-3">
-                        <div>
+                    <div class="d-flex align-items-center pt-5 pe-5">
+                        <div class="w-50">
                             <img class="img-fluid author-img" src="${blog.author.img ? blog.author.img : 'No Image Found'}" alt="">
-                            <span>${blog.author.name ? blog.author.name : 'No Name Found'}</span>
+                            <span class="fs-6 fw-bolder">${blog.author.name ? blog.author.name : 'No Name Found'}</span>
                         </div>
-                        <div>
-                            <span>${blog.total_view ? blog.total_view : 'No Views'}</span>
+                        <div class="w-25">
+                            <span><i class="fa-solid fa-eye pe-2"></i>${blog.total_view ? blog.total_view : 'No Views'}</span>
                         </div>
-                        <div>
+                        <div class="w-25 text-end">
                             <button onclick="loadNewsDetail('${blog._id}')" href="#" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#displayModal">More Info</button>
                         </div>
                         
