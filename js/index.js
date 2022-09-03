@@ -70,22 +70,22 @@ const displayAllNews = blogs => {
     blogs.forEach(blog => {
         const blogDiv = document.createElement('div');
         blogDiv.innerHTML = `
-        <div class="row p-3 m-4 shadow-lg rounded border-opacity-25 w-75 mx-auto">
-            <div class="col-md-4">
+        <div class="row shadow-lg rounded mt-5 mx-1">
+            <div class="col-md-4 p-3">
                 <img src="${blog.thumbnail_url}" class="img-fluid rounded-start" alt="...">
             </div>
-            <div class="col-md-8">
-                <div class="card-body">
+            <div class="col-md-8 p-3">
+                <div class="card-body mt-3">
                     <h5 class="card-title">${blog.title}</h5>
                     <p class="card-text">${blog.details.slice(0, 300) + '...'}</p>
                 </div>
-                    <div class="d-flex justify-content-center">
+                    <div class="d-flex justify-content-center align-items-center pt-3">
                         <div>
                             <img class="img-fluid author-img" src="${blog.author.img ? blog.author.img : 'No Image Found'}" alt="">
-                            <h6>${blog.author.name ? blog.author.name : 'No Name Found'}</h6>
+                            <span>${blog.author.name ? blog.author.name : 'No Name Found'}</span>
                         </div>
                         <div>
-                            <h6>${blog.total_view ? blog.total_view : 'No Views'}</h6>
+                            <span>${blog.total_view ? blog.total_view : 'No Views'}</span>
                         </div>
                         <div>
                             <button onclick="loadNewsDetail('${blog._id}')" href="#" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#displayModal">More Info</button>
@@ -111,11 +111,7 @@ const loadNewsDetail = details => {
 
 // Displaying details in a Modal
 const displayNewsDetail = modals => {
-    console.log(modals);
-
     modals.forEach(modal => {
-        console.log(modal);
-
         const modalTitle = document.getElementById('displayModalLabel');
         modalTitle.innerHTML = `
         <h3>Title: ${modal.title ? modal.title : 'No Title Found'}</h3>
