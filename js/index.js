@@ -4,6 +4,16 @@ const loadNewsCategory = () => {
         .then(data => displayData(data.data.news_category))
 }
 
+const toggleSpinner = isLoading => {
+    const loaderSection = document.getElementById('loader');
+    if (isLoading) {
+        loaderSection.classList.remove('d-none');
+    }
+    else {
+        loaderSection.classList.add('d-none');
+    }
+}
+
 const displayData = categories => {
     const categoriesContainer = document.getElementById('categories');
     categories.forEach(category => {
@@ -15,10 +25,10 @@ const displayData = categories => {
         `;
         categoriesContainer.appendChild(categoryDiv);
     });
-
 }
 
 const loadNewsCategoryId = (id) => {
+    toggleSpinner(true);
     fetch(`https://openapi.programming-hero.com/api/news/category/${id}`)
         .then(res => res.json())
         .then(data => displayAllNews(data.data))
@@ -26,8 +36,8 @@ const loadNewsCategoryId = (id) => {
 
 const displayAllNews = blogs => {
     const blogsContainer = document.getElementById('blog-container');
+    blogsContainer.textContent = '';
     blogs.forEach(blog => {
-        console.log(blog);
         const blogDiv = document.createElement('div');
         // blogDiv.classList.add('blog');
         blogDiv.innerHTML = `
@@ -57,7 +67,8 @@ const displayAllNews = blogs => {
         </div>
         `;
         blogsContainer.appendChild(blogDiv);
-    })
+    });
+    toggleSpinner(false);
 }
 
 
@@ -66,6 +77,7 @@ const loadNewsDetail = details => {
     fetch(`https://openapi.programming-hero.com/api/news/${details}`)
         .then(res => res.json())
         .then(data => displayNewsDetail(data.data))
+
 }
 
 const displayNewsDetail = modals => {
@@ -83,7 +95,7 @@ const displayNewsDetail = modals => {
             <h5>Author Name: ${modal.author.name ? modal.author.name : 'No Author Found'}</h5>
             <h6>Published Date: ${modal.author.published_date ? modal.author.published_date : 'No Published Date Found'}</h6>
             <h6>Views: ${modal.total_view ? modal.total_view : 'No Views Found'}</h6>
-            <p>Details: ${modal.details ? modal.details : 'No Details Found'}</p>
+            <img class="img-fluid" src="${modal.author.img}" alt="">
             `;
     })
 }
