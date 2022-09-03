@@ -32,7 +32,7 @@ const displayData = categories => {
     });
 }
 
-// loading News By Specific Categoyy
+// loading News By Specific Category
 const loadNewsCategoryId = (id) => {
     toggleSpinner(true);
     fetch(`https://openapi.programming-hero.com/api/news/category/${id}`)
@@ -47,11 +47,12 @@ const categories = blogs.sort((a, b) => {
 console.log(blogs); */
 
 
+/*  --------Displaying Blogs/News-------- */
 const displayAllNews = blogs => {
     const blogsContainer = document.getElementById('blog-container');
     blogsContainer.textContent = '';
 
-    // display no news found
+    // displaying no news found
     const noNews = document.getElementById('no-found-message');
     if (blogs.length === 0) {
         noNews.classList.remove('d-none');
@@ -60,7 +61,7 @@ const displayAllNews = blogs => {
         noNews.classList.add('d-none');
     }
 
-    // Display News Count
+    // Displaying News Count
     const newsCount = document.getElementById('news-count');
     newsCount.innerHTML = `
         <h5 class="ps-4">  ${blogs.length} items found in this category</h5>
@@ -68,7 +69,6 @@ const displayAllNews = blogs => {
 
     blogs.forEach(blog => {
         const blogDiv = document.createElement('div');
-        // blogDiv.classList.add('blog');
         blogDiv.innerHTML = `
         <div class="row p-3 m-4 shadow-lg rounded border-opacity-25 w-75 mx-auto">
             <div class="col-md-4">
@@ -101,7 +101,7 @@ const displayAllNews = blogs => {
 }
 
 
-
+// loading news details from More Info Button
 const loadNewsDetail = details => {
     fetch(`https://openapi.programming-hero.com/api/news/${details}`)
         .then(res => res.json())
@@ -109,6 +109,7 @@ const loadNewsDetail = details => {
 
 }
 
+// Displaying details in a Modal
 const displayNewsDetail = modals => {
     console.log(modals);
 
@@ -133,14 +134,11 @@ const displayNewsDetail = modals => {
 
 loadNewsDetail();
 
-
-// displayNewsDetail();
-
-// displayAllNews();
-
 loadNewsCategoryId();
 
 loadNewsCategory();
 
+// displayNewsDetail();
+// displayAllNews();
 // displayData();
 
