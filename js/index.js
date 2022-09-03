@@ -37,6 +37,18 @@ const loadNewsCategoryId = (id) => {
 const displayAllNews = blogs => {
     const blogsContainer = document.getElementById('blog-container');
     blogsContainer.textContent = '';
+
+    // display no news found
+    const noNews = document.getElementById('no-found-message');
+    if (blogs.length === 0) {
+        noNews.classList.remove('d-none');
+    }
+    else {
+        noNews.classList.add('d-none');
+    }
+
+    // Display News Count
+
     blogs.forEach(blog => {
         const blogDiv = document.createElement('div');
         // blogDiv.classList.add('blog');
