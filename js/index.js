@@ -11,7 +11,7 @@ const displayData = categories => {
         const categoryDiv = document.createElement('div');
         // categoryDiv.classList.add('col');
         categoryDiv.innerHTML = `
-        <button onclick="loadNewsCategoryId('${category.category_id}')" class="btn btn-light">${category.category_name}</button>
+        <button onclick="loadNewsCategoryId('${category.category_id}')" class="btn btn-light fs-5 fw-semibold">${category.category_name}</button>
         `;
         categoriesContainer.appendChild(categoryDiv);
     });
@@ -31,9 +31,9 @@ const displayAllNews = blogs => {
     blogs.forEach(blog => {
         console.log(blog);
         const blogDiv = document.createElement('div');
-        blogDiv.classList.add('blog');
+        // blogDiv.classList.add('blog');
         blogDiv.innerHTML = `
-        <div class="row g-0">
+        <div class="row p-3 m-4 border border-secondary rounded border-opacity-25 w-75 mx-auto">
             <div class="col-md-4">
                 <img src="${blog.thumbnail_url}" class="img-fluid rounded-start" alt="...">
             </div>
