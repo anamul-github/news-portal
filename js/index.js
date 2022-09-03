@@ -40,7 +40,7 @@ const displayAllNews = blogs => {
             <div class="col-md-8">
                 <div class="card-body">
                     <h5 class="card-title">${blog.title}</h5>
-                    <p class="card-text">${blog.details.slice(0, 300)}</p>
+                    <p class="card-text">${blog.details.slice(0, 300) + '...'}</p>
                 </div>
                     <div class="d-flex justify-content-center">
                         <div>
@@ -51,7 +51,7 @@ const displayAllNews = blogs => {
                             <h6>${blog.total_view}</h6>
                         </div>
                         <div>
-                            <button onclick="loadNewsDetail('${blog.details.slice(0, 200) + '...'}', '${blog.imagr_url}')" href="#" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">More Info</button>
+                            <button onclick="displayNewsDetail('${blog.author}')" href="#" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#displayModal">More Info</button>
                         </div>
                         
                     </div>
@@ -64,31 +64,31 @@ const displayAllNews = blogs => {
 
 
 
-const loadNewsDetail = news_id => {
-    fetch(`https://openapi.programming-hero.com/api/news/${news_id}`)
+/* const loadNewsDetail = details => {
+    fetch(`https://openapi.programming-hero.com/api/news/${details}`)
         .then(res => res.json())
         .then(data => console.log(data))
-}
-
-/* const displayNewsDetail = modal => {
-    console.log(modal);
-    const modalTitle = document.getElementById('displayModalLabel');
-    console.log(modalTitle);
-    // modalTitle.innerText = blog.name;
-    const newsDetail = document.getElementById('news-details');
-    newsDetail.innerHTML = `
-    <h5>Author Name: ${modal.name} </h5>
-    `;
-
-
 } */
 
+const displayNewsDetail = modal => {
+    console.log(modal);
+    const modalTitle = document.getElementById('displayModalLabel');
+    // console.log(modalTitle);
+    modalTitle.innerText = modal.details;
+    const newsDetail = document.getElementById('news-details');
+    console.log(newsDetail);
+    newsDetail.innerHTML = `
+   <h5>Author Name: ${modal.name ? modal.name : 'No Author Found'} </h5>
+   `;
+
+}
 
 
-loadNewsDetail();
+
+// loadNewsDetail();
 
 
-
+// displayNewsDetail();
 
 // displayAllNews();
 
