@@ -13,6 +13,7 @@
 </head>
 
 <body>
+    <!-- navbar -->
     <header class="container mt-4 mb-5">
         <div class="d-flex">
             <div class="container-fluid">
@@ -20,7 +21,7 @@
             </div>
             <div class="d-flex justify-content-end">
                 <div class="px-2">
-                    <a class="nav-link text-secondary fs-5 fw-bolder" href="#">Highlights</a>
+                    <a class="nav-link text-secondary fs-5 fw-bolder" href="index.html">Highlights</a>
                 </div>
                 <div class="px-2">
                     <a class="nav-link text-secondary fs-5 fw-semibold" href="blog.html">Blog</a>
@@ -30,6 +31,7 @@
         <hr class="mb-3">
     </header>
 
+    <!-- News Categories -->
     <main class="container">
         <section class="mb-5">
             <div id="categories" class="d-flex justify-content-between px-2">
@@ -37,9 +39,32 @@
             </div>
         </section>
 
+        <!-- Each News Blog -->
         <section class="container">
             <div id="blog-container" class="mb-3">
 
+            </div>
+        </section>
+
+        <!-- Modal -->
+        <section>
+            <div class="modal fade" id="displayModal" tabindex="-1" aria-labelledby="displayModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="displayModalLabel">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div id="news-details" class="modal-body">
+                            <h1>Let's Check</h1>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>

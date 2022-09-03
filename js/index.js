@@ -33,7 +33,7 @@ const displayAllNews = blogs => {
         const blogDiv = document.createElement('div');
         // blogDiv.classList.add('blog');
         blogDiv.innerHTML = `
-        <div class="row p-3 m-4 border border-secondary rounded border-opacity-25 w-75 mx-auto">
+        <div class="row p-3 m-4 shadow-lg rounded border-opacity-25 w-75 mx-auto">
             <div class="col-md-4">
                 <img src="${blog.thumbnail_url}" class="img-fluid rounded-start" alt="...">
             </div>
@@ -51,7 +51,7 @@ const displayAllNews = blogs => {
                             <h6>${blog.total_view}</h6>
                         </div>
                         <div>
-                            <button onclick="loadNewsDetail(${blogs})" type="button" class="btn btn-primary">More Info</button>
+                            <button onclick="loadNewsDetail('${blog.details.slice(0, 200) + '...'}', '${blog.imagr_url}')" href="#" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">More Info</button>
                         </div>
                         
                     </div>
@@ -64,11 +64,24 @@ const displayAllNews = blogs => {
 
 
 
-const loadNewsDetail = () => {
-    fetch('https://openapi.programming-hero.com/api/news/0282e0e58a5c404fbd15261f11c2ab6a')
+const loadNewsDetail = news_id => {
+    fetch(`https://openapi.programming-hero.com/api/news/${news_id}`)
         .then(res => res.json())
         .then(data => console.log(data))
 }
+
+/* const displayNewsDetail = modal => {
+    console.log(modal);
+    const modalTitle = document.getElementById('displayModalLabel');
+    console.log(modalTitle);
+    // modalTitle.innerText = blog.name;
+    const newsDetail = document.getElementById('news-details');
+    newsDetail.innerHTML = `
+    <h5>Author Name: ${modal.name} </h5>
+    `;
+
+
+} */
 
 
 
