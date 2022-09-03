@@ -25,8 +25,6 @@ const loadNewsCategoryId = (id) => {
 }
 
 const displayAllNews = blogs => {
-    // console.log(blogs);
-
     const blogsContainer = document.getElementById('blog-container');
     blogs.forEach(blog => {
         console.log(blog);
