@@ -60,7 +60,7 @@ const displayAllNews = blogs => {
     newsCount.innerHTML = `
         <h5 class="ps-4">  ${blogs.length} items found in this category</h5>
     `
-    // sorting
+    // sort by views
     blogs.sort((a, b) => {
         return b.total_view - a.total_view;
     });
@@ -132,7 +132,5 @@ loadNewsCategoryId();
 
 loadNewsCategory();
 
-// displayNewsDetail();
-// displayAllNews();
-// displayData();
+
 

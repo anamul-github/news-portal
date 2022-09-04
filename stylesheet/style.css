@@ -7,7 +7,7 @@
 
 /* Media Query for small Devices */
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 600px) {
     .category-buttons {
         display: block !important;
         width: 100%;
