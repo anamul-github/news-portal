@@ -26,7 +26,7 @@ const displayData = categories => {
     categories.forEach(category => {
         const categoryDiv = document.createElement('div');
         categoryDiv.innerHTML = `
-        <button onclick="loadNewsCategoryId('${category.category_id}')" class="btn btn-light fs-5 fw-semibold">${category.category_name}</button>
+        <button onclick="loadNewsCategoryId('${category.category_id}')" class="btn btn-light fs-5 fw-semibold category-buttons">${category.category_name}</button>
         `;
         categoriesContainer.appendChild(categoryDiv);
     });
@@ -72,7 +72,7 @@ const displayAllNews = blogs => {
         blogDiv.innerHTML = `
         <div class="row shadow-lg rounded mt-5 mx-1">
             <div class="col-md-4 p-3">
-                <img src="${blog.thumbnail_url}" class="img-fluid rounded-start" alt="...">
+                <img src="${blog.thumbnail_url}" class="img-fluid rounded-start blogs-thumbnail" alt="...">
             </div>
             <div class="col-md-8 p-3">
                 <div class="card-body mt-3 pe-5">
@@ -82,13 +82,13 @@ const displayAllNews = blogs => {
                     <div class="d-flex align-items-center pt-5 pe-5">
                         <div class="w-50">
                             <img class="img-fluid author-img" src="${blog.author.img ? blog.author.img : 'No Image Found'}" alt="">
-                            <span class="fs-6 fw-bolder">${blog.author.name ? blog.author.name : 'No Name Found'}</span>
+                            <span class="fs-5 fw-semibold ms-2">${blog.author.name ? blog.author.name : 'No Name Found'}</span>
                         </div>
                         <div class="w-25">
-                            <span><i class="fa-solid fa-eye pe-2"></i>${blog.total_view ? blog.total_view : 'No Views'}</span>
+                            <span class="fs-6 fw-semibold"><i class="fa-solid fa-eye pe-2"></i>${blog.total_view ? blog.total_view : 'No Views'}</span>
                         </div>
                         <div class="w-25 text-end">
-                            <button onclick="loadNewsDetail('${blog._id}')" href="#" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#displayModal">More Info</button>
+                            <button onclick="loadNewsDetail('${blog._id}')" href="#" type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#displayModal">More Info</button>
                         </div>
                         
                     </div>
