@@ -7,9 +7,9 @@
 
 /* Media Query for small Devices */
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
     .category-buttons {
-        display: block;
+        display: block !important;
         width: 100%;
         text-align: center !important;
 
@@ -17,5 +17,43 @@
 
     .blogs-thumbnail {
         width: 100% !important;
+    }
+
+    .blog-writings {
+        width: 100% !important;
+    }
+
+    .author-img {
+        width: 50% !important;
+        border-radius: 45px;
+    }
+
+    .author-part {
+        display: block !important;
+        flex-direction: column !important;
+        padding: 5px;
+    }
+
+    .author-info {
+        width: 100% !important;
+        text-align: center !important;
+        padding: 10px;
+    }
+
+    .views-part {
+        padding-bottom: 10px !important;
+    }
+
+    .modal-button {
+        width: 100% !important;
+        text-align: center !important;
+
+    }
+
+    /* Blog Page */
+    .heading-para {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
 }

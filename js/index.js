@@ -75,19 +75,19 @@ const displayAllNews = blogs => {
                 <img src="${blog.thumbnail_url}" class="img-fluid rounded-start blogs-thumbnail" alt="...">
             </div>
             <div class="col-md-8 p-3">
-                <div class="card-body mt-3 pe-5">
+                <div class="card-body mt-3 pe-5 blog-writings">
                     <h5 class="card-title">${blog.title}</h5>
                     <p class="card-text pt-3">${blog.details.slice(0, 300) + '...'}</p>
                 </div>
-                    <div class="d-flex align-items-center pt-5 pe-5">
-                        <div class="w-50">
+                    <div class="d-flex align-items-center pt-5 pe-5 author-part">
+                        <div class="w-50 author-info">
                             <img class="img-fluid author-img" src="${blog.author.img ? blog.author.img : 'No Image Found'}" alt="">
                             <span class="fs-5 fw-semibold ms-2">${blog.author.name ? blog.author.name : 'No Name Found'}</span>
                         </div>
-                        <div class="w-25">
+                        <div class="w-25 views-part">
                             <span class="fs-6 fw-semibold"><i class="fa-solid fa-eye pe-2"></i>${blog.total_view ? blog.total_view : 'No Views'}</span>
                         </div>
-                        <div class="w-25 text-end">
+                        <div class="w-25 text-end modal-button">
                             <button onclick="loadNewsDetail('${blog._id}')" href="#" type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#displayModal">More Info</button>
                         </div>
                         
