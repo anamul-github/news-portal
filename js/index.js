@@ -40,12 +40,6 @@ const loadNewsCategoryId = (id) => {
         .then(data => displayAllNews(data.data))
 }
 
-/* sorting
-const categories = blogs.sort((a, b) => {
-    return b.propertyName - a.propertyName;
-})
-console.log(blogs); */
-
 
 /*  --------Displaying Blogs/News-------- */
 const displayAllNews = blogs => {
@@ -66,6 +60,10 @@ const displayAllNews = blogs => {
     newsCount.innerHTML = `
         <h5 class="ps-4">  ${blogs.length} items found in this category</h5>
     `
+    // sorting
+    blogs.sort((a, b) => {
+        return b.total_view - a.total_view;
+    });
 
     blogs.forEach(blog => {
         const blogDiv = document.createElement('div');
